@@ -1,0 +1,25 @@
+{
+  "name": "agent-bond-services",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --import tsx --test src/guardian/guardian.test.ts",
+    "typecheck": "tsc --noEmit",
+    "setup:testnet": "tsx src/setup-testnet.ts",
+    "reset:agent": "tsx src/reset-agent.ts",
+    "demo:offline": "tsx src/demo-offline.ts",
+    "guardian": "tsx --env-file=.env src/guardian/main.ts",
+    "agent:honest": "tsx --env-file=.env src/agent/main.ts honest",
+    "agent:injected": "tsx --env-file=.env src/agent/main.ts injected"
+  },
+  "dependencies": {
+    "near-api-js": "^7.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
