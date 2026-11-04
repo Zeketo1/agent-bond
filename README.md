@@ -24,7 +24,7 @@ The bond is what makes autonomy safe to grant: the most an agent can put at risk
 ## How NEAR is used
 
 - **Smart contract on NEAR** (`contract/`, Rust, near-sdk 5): holds the bonds and budgets, enforces the policy, runs the challenge window, slashes. The chain enforces the rules, not a server.
-- **NEAR testnet** for the live demo. The contract is deployed at [`bond-0b8798.testnet`](https://testnet.nearblocks.io/address/bond-0b8798.testnet).
+- **NEAR testnet** for the live demo. The contract is deployed at [`bond-9dbe1f.testnet`](https://testnet.nearblocks.io/address/bond-9dbe1f.testnet).
 - **NEAR AI Cloud** (optional): the guardian can ask a private model to review payments that its rules are unsure about. Inference runs in a TEE. Without an API key, the guardian uses rules only.
 
 ## What is in the repo
@@ -114,6 +114,8 @@ Open http://localhost:5173 (it reads the contract from `dashboard/config.json`, 
 | Attacker | Received nothing |
 
 ## The guardian
+
+The dashboard is a viewer: it only reads from testnet, and nothing on the page can challenge or slash a payment. The guardian is a separate service you run. It holds the key of the contract's guardian account and signs the challenge and finalize transactions. A hosted dashboard therefore shows what has already happened; to create new activity, run the guardian and agent from this repo (see "Try it").
 
 `services/src/guardian/` reviews payments in the challenge window:
 
